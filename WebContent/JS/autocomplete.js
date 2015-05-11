@@ -14,7 +14,7 @@ $(function() {
 			$("#divControl").addClass('vertical-row').removeClass('vertical-center-row');
 			$("#divControl").css({"padding-top": "30px"});
 			$.ajax({
-				url : "SearchAutocomplete.cd",
+				url : "SearchAutocomplete.cd", 
 				dataType : "json",
 				data : request,
 				success : function (data, textStatus, jqXHR) {
