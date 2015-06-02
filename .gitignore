@@ -1,0 +1,7 @@
+*.csv
+*.class
+bin
+build
+.classpath
+.project
+.settings
