@@ -2,13 +2,18 @@ package handlers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import database.Database;
 
 import mvcController.HttpRequestHandler;
 import net.sf.json.JSONArray;
@@ -48,34 +53,38 @@ public class SearchAutocomplete implements HttpRequestHandler {
 		super();
 	}
 	
-	private static JSONArray getProperArray(String term) {
+	private static JSONArray getProperArray(String query) {
 		JSONArray array = new JSONArray();
-		ArrayList<String> m1 = new ArrayList<String>();
-		/*
+		List<String> list = new ArrayList<String>();
+				
+		Database.connect();
+		ResultSet rs;
 		int count = 0;
 		
-		// TODO: sort movies
+		String prefix = "";
+		String fixedQuery = query;
 		
-		for (Movie m : movies) {
-			if ((m.getTitle().toLowerCase().startsWith(term) ||
-					m.getTitle().toLowerCase().startsWith("the " + term)) &&
-					m.getStreamingUrl() != null) {
-				m1.add(m.getPair());
-				++count;
-				if (count >= MAX_SHOWING) break;
+		try {
+			if (query.lastIndexOf(' ') != -1) {
+				prefix = query.substring(0, query.lastIndexOf(' '));
+				fixedQuery = query.substring(query.lastIndexOf(' ') + 1); 
 			}
+			rs = Database.executeQuery("SELECT * FROM icsdump.termidtoterm WHERE term LIKE '" + fixedQuery + "%'");
+			while (rs.next() && count++ < MAX_SHOWING) {
+				list.add(rs.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		*/
-		
-		m1.add("hello");
-		m1.add("world");
 		
 		// sort lists in alphabetical order
-		if (!m1.isEmpty()) Collections.sort(m1);
+		if (!list.isEmpty()) {
+			Collections.sort(list);
+		}
 		
 		// add titles to JSONArray
-		for (String s : m1) {
-			array.add(s);
+		for (String s : list) {
+			array.add(prefix + " " + s);
 		}
 		
 		System.out.println(array.toString());
