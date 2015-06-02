@@ -15,7 +15,9 @@ public class DisplayPage implements HttpRequestHandler {
 	public void handle(HttpServletRequest request, HttpServletResponse response)
 			throws ParseException, ServletException, IOException,
 			NumberFormatException {
-		// TODO
+		
+		System.out.println(request.getParameter("query"));
+		
 	};
 
 	public DisplayPage() {

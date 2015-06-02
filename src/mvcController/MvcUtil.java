@@ -34,16 +34,15 @@ public class MvcUtil {
 			Enumeration enKeys = props.propertyNames();
 			while (enKeys.hasMoreElements()) {
 				String key = (String) enKeys.nextElement();
-				System.out.println("key" + key);
+				//System.out.println("key" + key);
 				String clazz = props.getProperty(key);
-				System.out.println(clazz);
+				//System.out.println(clazz);
 				Class handClazz = Class.forName(clazz);
 				// Check for interface
-				if (checkInterface(handClazz,
-						"mvcController.HttpRequestHandler")) {
+				if (checkInterface(handClazz, "mvcController.HttpRequestHandler")) {
 					Object handler = handClazz.newInstance();
 					handlers.put(key, handler);
-					System.out.println(key + " " + handler);
+					//System.out.println(key + " " + handler);
 				} else {
 					throw new MvcException(
 							"Class does not  implement com.caritor.mvc.HttpRequestHandlerinterface");
@@ -53,7 +52,6 @@ public class MvcUtil {
 			throw new MvcException("");
 		} catch (IOException e) {
 			throw new MvcException("");
-
 		} catch (ClassNotFoundException e) {
 			throw new MvcException("Mvc ClassNotFoundException " + e);
 		} catch (InstantiationException e) {

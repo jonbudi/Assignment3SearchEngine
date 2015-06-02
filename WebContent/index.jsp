@@ -26,7 +26,7 @@
                	<h1 id="header">Not Google</h1>
                	<form name="searchForm" method="post" action="DisplayPage.cd">
 					<div class="form-group">
-				    	<input type="text" class="form-control" id="searchBar" name="movie"
+				    	<input type="text" class="form-control" id="searchBar" name="query"
 				    		placeholder="Search" autofocus required>
 				 	</div>
 				</form>

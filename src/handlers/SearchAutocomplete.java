@@ -20,8 +20,7 @@ import net.sf.json.JSONArray;
 
 public class SearchAutocomplete implements HttpRequestHandler {
 
-	/* max number of suggestions shown */
-	@SuppressWarnings("unused")
+	/** max number of suggestions shown **/
 	private static final int MAX_SHOWING = 10;
 	
 	@Override
@@ -38,7 +37,6 @@ public class SearchAutocomplete implements HttpRequestHandler {
 			out = response.getWriter();
 
 			String term = request.getParameter("term");
-			//System.out.println(term);
 			
 			JSONArray array = getProperArray(term);
 			
@@ -53,6 +51,7 @@ public class SearchAutocomplete implements HttpRequestHandler {
 		super();
 	}
 	
+	/** get autocomplete suggestions array **/
 	private static JSONArray getProperArray(String query) {
 		JSONArray array = new JSONArray();
 		List<String> list = new ArrayList<String>();
@@ -69,6 +68,7 @@ public class SearchAutocomplete implements HttpRequestHandler {
 				prefix = query.substring(0, query.lastIndexOf(' '));
 				fixedQuery = query.substring(query.lastIndexOf(' ') + 1); 
 			}
+			fixedQuery = fixedQuery.trim();
 			rs = Database.executeQuery("SELECT * FROM icsdump.termidtoterm WHERE term LIKE '" + fixedQuery + "%'");
 			while (rs.next() && count++ < MAX_SHOWING) {
 				list.add(rs.getString(2));
@@ -87,7 +87,7 @@ public class SearchAutocomplete implements HttpRequestHandler {
 			array.add(prefix + " " + s);
 		}
 		
-		System.out.println(array.toString());
+		//System.out.println(array.toString());
 		return array;
 	}
 }
