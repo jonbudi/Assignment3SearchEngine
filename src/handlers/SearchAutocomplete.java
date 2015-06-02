@@ -22,11 +22,10 @@ public class SearchAutocomplete implements HttpRequestHandler {
 
 	/** max number of suggestions shown **/
 	private static final int MAX_SHOWING = 10;
-	
+
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response)
-			throws ParseException, ServletException, IOException,
-			NumberFormatException {
+			throws ParseException, ServletException, IOException, NumberFormatException {
 		PrintWriter out;
 		try {
 			response.setContentType("text/html");
@@ -36,10 +35,9 @@ public class SearchAutocomplete implements HttpRequestHandler {
 
 			out = response.getWriter();
 
-			String term = request.getParameter("term");
-			
-			JSONArray array = getProperArray(term);
-			
+			String query = request.getParameter("term").trim().toLowerCase();
+			JSONArray array = getProperArray(query);
+
 			out.println(array.toString());
 			out.close();
 		} catch (Exception e) {
@@ -50,43 +48,47 @@ public class SearchAutocomplete implements HttpRequestHandler {
 	public SearchAutocomplete() {
 		super();
 	}
-	
+
 	/** get autocomplete suggestions array **/
 	private static JSONArray getProperArray(String query) {
 		JSONArray array = new JSONArray();
 		List<String> list = new ArrayList<String>();
-				
+
 		Database.connect();
 		ResultSet rs;
 		int count = 0;
-		
+
 		String prefix = "";
 		String fixedQuery = query;
-		
+
 		try {
 			if (query.lastIndexOf(' ') != -1) {
 				prefix = query.substring(0, query.lastIndexOf(' '));
-				fixedQuery = query.substring(query.lastIndexOf(' ') + 1); 
+				fixedQuery = query.substring(query.lastIndexOf(' ') + 1);
 			}
-			fixedQuery = fixedQuery.trim();
-			rs = Database.executeQuery("SELECT * FROM icsdump.termidtoterm WHERE term LIKE '" + fixedQuery + "%'");
+
+			rs = Database.executeQuery("SELECT * FROM icsdump.termidtoterm WHERE term LIKE '"
+					+ fixedQuery + "%'"); // TODO: sort by most popular terms first
+
 			while (rs.next() && count++ < MAX_SHOWING) {
 				list.add(rs.getString(2));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		// sort lists in alphabetical order
+
+		// sort list in alphabetical order
+		/*
 		if (!list.isEmpty()) {
 			Collections.sort(list);
 		}
-		
-		// add titles to JSONArray
+		*/
+
+		// add suggestions to JSONArray
 		for (String s : list) {
 			array.add(prefix + " " + s);
 		}
-		
+
 		//System.out.println(array.toString());
 		return array;
 	}

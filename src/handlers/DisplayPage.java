@@ -10,14 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import mvcController.HttpRequestHandler;
 
 public class DisplayPage implements HttpRequestHandler {
-	
+
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response)
-			throws ParseException, ServletException, IOException,
-			NumberFormatException {
-		
-		System.out.println(request.getParameter("query"));
-		
+			throws ParseException, ServletException, IOException, NumberFormatException {
+
+		String query = request.getParameter("query").trim().toLowerCase();
+
+		System.out.println("In DisplayPage.java");
+		System.out.println(query);
+
 	};
 
 	public DisplayPage() {
