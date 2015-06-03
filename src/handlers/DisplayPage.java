@@ -1,6 +1,7 @@
 package handlers;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import database.DatabaseCall;
 import domain.SearchResult;
 
 import mvcController.HttpRequestHandler;
@@ -25,10 +27,17 @@ public class DisplayPage implements HttpRequestHandler {
 		
 		String initialQuery = request.getParameter("query").trim().toLowerCase();
 		String[] querys = initialQuery.split(" "); 
+		
+		int termId;
 		for (String query : querys) {
 			// TODO: implement this!
 			System.out.println(query);
-			break;
+			try {
+				termId = DatabaseCall.getTermId(query);
+				System.out.println(termId);
+			} catch (SQLException e) {
+				//e.printStackTrace();
+			}
 		}
 		
 		results.add(new SearchResult(0, "Google", "http://www.google.com"));

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.Database;
-import database.SQLQueries;
+import database.DatabaseCall;
 
 import mvcController.HttpRequestHandler;
 import net.sf.json.JSONArray;
@@ -67,7 +67,8 @@ public class SearchAutocomplete implements HttpRequestHandler {
 				fixedQuery = query.substring(query.lastIndexOf(' ') + 1);
 			}
 
-			rs = Database.executeQuery(String.format(SQLQueries.autocomplete, fixedQuery));
+			// call to database
+			rs = DatabaseCall.getAutocomplete(fixedQuery);
 
 			while (rs.next() && count++ < MAX_SHOWING) {
 				list.add(rs.getString(1));
