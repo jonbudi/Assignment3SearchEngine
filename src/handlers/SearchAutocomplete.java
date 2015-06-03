@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.Database;
+import database.SQLQueries;
 
 import mvcController.HttpRequestHandler;
 import net.sf.json.JSONArray;
@@ -67,11 +67,10 @@ public class SearchAutocomplete implements HttpRequestHandler {
 				fixedQuery = query.substring(query.lastIndexOf(' ') + 1);
 			}
 
-			rs = Database.executeQuery("SELECT * FROM icsdump.termidtoterm WHERE term LIKE '"
-					+ fixedQuery + "%'"); // TODO: sort by most popular terms first
+			rs = Database.executeQuery(String.format(SQLQueries.autocomplete, fixedQuery));
 
 			while (rs.next() && count++ < MAX_SHOWING) {
-				list.add(rs.getString(2));
+				list.add(rs.getString(1));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
