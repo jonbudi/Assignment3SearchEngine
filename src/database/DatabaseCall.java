@@ -45,4 +45,17 @@ public class DatabaseCall {
 		
 		return map;
 	}
+	
+	public static int getPageRank(int docId) throws SQLException {
+		int score = -1;
+		ResultSet rs = Database.executeQuery(String.format("SELECT value FROM icsdump.pagerank " + 
+				"WHERE docid = '%d'", docId));
+		
+		while (rs.next()) {
+			score = rs.getInt(1);
+			break;
+		}
+		
+		return score;
+	}
 }
