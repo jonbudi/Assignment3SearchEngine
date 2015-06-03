@@ -2,6 +2,7 @@
 *.class
 bin
 build
+FileDump
 .classpath
 .project
 .settings

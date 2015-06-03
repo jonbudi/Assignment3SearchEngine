@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="domain.SearchResult,java.util.*"%>
 
+<% 
+ 	List<SearchResult> results = (List<SearchResult>)request.getAttribute("results");
+ 	if (results ==  null) {
+ 		results = new ArrayList<SearchResult>();
+ 	}
+ 	//int found = results.size();
+ 
+ %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,17 +30,22 @@
 </head>
 <body>
 	<div class="container">
-		<div class="vertical-center-row" id="divControl">
-			<div align="center">
-				<h1 id="header">CS 121 Search Engine</h1>
-				<form name="searchForm" method="post" action="DisplayPage.cd">
-					<div class="form-group">
-						<input type="text" class="form-control" id="searchBar"
-							name="query" placeholder="Search" autofocus required>
-					</div>
-				</form>
+		<br></br>
+		<form name="searchForm" method="post" action="DisplayPage.cd">
+			<div class="form-group">
+				<input type="text" class="form-control" id="searchBar" name="query"
+					placeholder="Search" autofocus required>
 			</div>
-		</div>
+		</form>
+		<h1 id="header">Search Results</h1>
+		<%	
+			for (int i = 0; i < results.size(); ++i) {
+				SearchResult sr = results.get(i);
+		%>
+			<p><a href="<%= sr.getUrl() %>"><%= sr.getTitle() %></a></p>
+			<p><%= sr.getUrl() %></p>
+			<br></br>
+		<% } %>
 	</div>
 </body>
 </html>

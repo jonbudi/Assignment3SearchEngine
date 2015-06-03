@@ -76,13 +76,6 @@ public class SearchAutocomplete implements HttpRequestHandler {
 			e.printStackTrace();
 		}
 
-		// sort list in alphabetical order
-		/*
-		if (!list.isEmpty()) {
-			Collections.sort(list);
-		}
-		*/
-
 		// add suggestions to JSONArray
 		for (String s : list) {
 			array.add(prefix + " " + s);
