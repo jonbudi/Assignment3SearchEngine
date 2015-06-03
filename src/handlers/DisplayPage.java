@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,17 +33,42 @@ public class DisplayPage implements HttpRequestHandler {
 		String initialQuery = request.getParameter("query").trim().toLowerCase();
 		String[] querys = initialQuery.split(" "); 
 		
-		int termId;
+		Map<Integer, Double> scores = new TreeMap<Integer, Double>();
+		Map<Integer, Integer> map;
+		
+		double score;
 		for (String query : querys) {
-			// TODO: implement this!
 			System.out.println(query);
+			
 			try {
-				termId = DatabaseCall.getTermId(query);
-				System.out.println(termId);
+				map = DatabaseCall.getTFIDF(query);
+				System.out.println(map.size());
+				for (int docId : map.keySet()) {
+					score = map.get(docId);
+					if (scores.containsKey(docId)) {
+						scores.put(docId, scores.get(docId) * Math.log(score));
+					} else {
+						scores.put(docId, Math.log(score));
+					}
+				}
+				
 			} catch (SQLException e) {
 				//e.printStackTrace();
 			}
+			
 		}
+
+		double highest = -1;
+		int index = -1;
+		for (int key: scores.keySet()) {
+			if (scores.get(key) > highest) {
+				highest = scores.get(key);
+				index = key;
+			}
+			System.out.println(key + " " + scores.get(key));
+		}
+		
+		System.out.println(index + " " + highest);
 		
 		results.add(new SearchResult(0, "Google", "http://www.google.com"));
 		results.add(new SearchResult(100, "Yahoo", "http://www.yahoo.com"));
