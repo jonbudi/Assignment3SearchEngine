@@ -4,7 +4,7 @@
 
 <% 
  	List<SearchResult> results = (List<SearchResult>)request.getAttribute("results");
- 	if (results ==  null) {
+ 	if (results == null) {
  		results = new ArrayList<SearchResult>();
  	}
  	//int found = results.size();
@@ -46,6 +46,7 @@
 			<p><%= sr.getUrl() %></p>
 			<br></br>
 		<% } %>
+		<a href="">Next Page</a>
 	</div>
 </body>
 </html>

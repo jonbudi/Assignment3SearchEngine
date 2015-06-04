@@ -23,12 +23,13 @@ public class DatabaseCall {
 			break;
 		}
 
+		System.out.println(termId);
+
 		return termId;
 	}
 
 	public static Map<Integer, Integer> getTFIDF(String term) throws SQLException {
 		Map<Integer, Integer> map = new TreeMap<Integer, Integer>();
-		
 		int termId = getTermId(term);
 		if (termId != -1) {
 			int docId, value;
