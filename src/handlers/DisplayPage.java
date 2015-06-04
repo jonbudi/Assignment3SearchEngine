@@ -38,14 +38,15 @@ public class DisplayPage implements HttpRequestHandler {
 		System.out.println("In DisplayPage.java");
 
 		HttpSession session = request.getSession(true);
+		// get list of search results (used to get url and title)
 		if (session.getAttribute("searchList") == null) {
 			session.setAttribute("searchList", getSearchResultList());
 		}
-		// get list of search results (used to get url and title)
+		@SuppressWarnings("unchecked")
 		List<SearchResult> searchList = (List<SearchResult>) session.getAttribute("searchList");
 		System.out.println("searchList.size() = " + searchList.size());
 
-		// results to display
+		// list of results to display
 		List<SearchResult> results = new ArrayList<SearchResult>();
 
 		String initialQuery = request.getParameter("query").trim().toLowerCase();
@@ -55,7 +56,7 @@ public class DisplayPage implements HttpRequestHandler {
 		Map<Integer, Integer> map;
 
 		double score = -1;
-		// for each query, calculate tdidf
+		// for each query term, calculate tdidf
 		for (String query : querys) {
 			System.out.println(query);
 			try {
@@ -83,21 +84,16 @@ public class DisplayPage implements HttpRequestHandler {
 			sr = searchList.get(docId);
 			for (String query : querys) {
 				if (sr.getTitle().contains(query)) {
-					if (scores.containsKey(docId)) {
-						scores.put(docId, scores.get(docId) * 1.3);
-						System.out.println(docId);
-					}
+					scores.put(docId, entry.getValue() * 1.3);
+					System.out.println(docId);
 				}
 				if (sr.getUrl().contains(query)) {
-					if (scores.containsKey(docId)) {
-						scores.put(docId, scores.get(docId) * 1.3);
-						System.out.println(docId);
-					}
+					scores.put(docId, entry.getValue() * 1.3);
+					System.out.println(docId);
 				}
 			}
 		}
 
-		/*
 		// sort by highest scores first
 		Map<Integer, Double> temp = sortByComparator(scores);
 
@@ -110,24 +106,23 @@ public class DisplayPage implements HttpRequestHandler {
 			} catch (SQLException e) {
 				//e.printStackTrace();
 			}
-			if (score != -1 && scores.containsKey(docId)) {
-				scores.put(docId, scores.get(docId) * Math.log(score));
+			if (score != -1) {
+				scores.put(docId, entry.getValue() * Math.log(score));
 			}
 
 			if (count++ > MAX_SHOWING) {
 				break;
 			}
 		}
-		*/
 		scores = sortByComparator(scores);
 
 		// get the scores title and url information
-		int count = 0;
+		count = 0;
 		for (Entry<Integer, Double> entry : scores.entrySet()) {
 			docId = entry.getKey();
 			System.out.println(entry.getValue());
 			sr = searchList.get(docId);
-			results.add(sr);
+			results.add(new SearchResult(docId, sr.getTitle(), sr.getUrl()));
 
 			if (count++ > MAX_SHOWING) {
 				break;
@@ -146,6 +141,7 @@ public class DisplayPage implements HttpRequestHandler {
 		super();
 	}
 
+	/** get list of search results **/
 	private static List<SearchResult> getSearchResultList() {
 		BufferedReader br = null;
 		List<SearchResult> list = new ArrayList<SearchResult>();
@@ -178,8 +174,10 @@ public class DisplayPage implements HttpRequestHandler {
 		return list;
 	}
 
+	/** 
+	 * sorts map by desc values
+	 * SOURCE: http://www.mkyong.com/java/how-to-sort-a-map-in-java/ **/
 	private static Map<Integer, Double> sortByComparator(Map<Integer, Double> unsortMap) {
-
 		// Convert Map to List
 		List<Map.Entry<Integer, Double>> list = new LinkedList<Map.Entry<Integer, Double>>(
 				unsortMap.entrySet());

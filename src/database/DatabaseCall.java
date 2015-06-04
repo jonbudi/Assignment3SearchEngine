@@ -35,7 +35,7 @@ public class DatabaseCall {
 			int docId, value;
 			
 			ResultSet rs = Database.executeQuery(String.format("SELECT docId, value FROM icsdump.tfidf " + 
-					"WHERE termid = '%d' ORDER BY value DESC", termId));
+					"WHERE termid = '%d'", termId));
 			
 			while (rs.next()) {
 				docId = rs.getInt(1);
