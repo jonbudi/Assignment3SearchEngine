@@ -154,7 +154,7 @@ public class DisplayPage implements HttpRequestHandler {
 			while ((currentLine = br.readLine()) != null) {
 				split = currentLine.split(",");
 				if (split.length == 1) {
-					list.add(new SearchResult(docId, "", split[0]));
+					list.add(new SearchResult(docId, "Untitled", split[0]));
 				} else {
 					list.add(new SearchResult(docId, split[1], split[0]));
 				}
