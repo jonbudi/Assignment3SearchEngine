@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Util.Util;
+
 import database.DatabaseCall;
 import domain.SearchResult;
 
@@ -78,18 +80,29 @@ public class DisplayPage implements HttpRequestHandler {
 
 		int docId;
 		SearchResult sr;
+		int titleMatches;
 		// for each doc, determine if any query term in url or title
 		for (Entry<Integer, Double> entry : scores.entrySet()) {
 			docId = entry.getKey();
 			sr = searchList.get(docId);
+			
+			titleMatches = 0;
 			for (String query : querys) {
 				if (sr.getTitle().contains(query)) {
-					scores.put(docId, entry.getValue() * 1.3);
-					System.out.println(docId);
+					for (String s : Util.tokenize(sr.getTitle())) {
+						if (s.equalsIgnoreCase(query)) {
+							scores.put(docId, entry.getValue() * 1.3 * ++titleMatches);
+							break;
+						}
+					}
 				}
 				if (sr.getUrl().contains(query)) {
-					scores.put(docId, entry.getValue() * 1.3);
-					System.out.println(docId);
+					for (String s : Util.tokenize(sr.getUrl())) {
+						if (s.equalsIgnoreCase(query)) {
+							scores.put(docId, entry.getValue() * 1.3);
+							break;
+						}
+					}
 				}
 			}
 		}
