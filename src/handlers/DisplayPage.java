@@ -1,6 +1,7 @@
 package handlers;
 
 import java.io.BufferedReader;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,121 +28,53 @@ import database.DatabaseCall;
 import domain.SearchResult;
 
 import mvcController.HttpRequestHandler;
+import org.jblas.Singular; 
 
 public class DisplayPage implements HttpRequestHandler {
 
 	/** max number of suggestions shown **/
 	private static final int MAX_SHOWING = 10;
+	private double score = -1; 
+	private int docId;
+	private SearchResult sr;
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response)
 			throws ParseException, ServletException, IOException, NumberFormatException {
 
 		System.out.println("In DisplayPage.java");
-
 		HttpSession session = request.getSession(true);
+		
+		
 		// get list of search results (used to get url and title)
 		if (session.getAttribute("searchList") == null) {
 			session.setAttribute("searchList", getSearchResultList());
 		}
+		
+		
 		@SuppressWarnings("unchecked")
 		List<SearchResult> searchList = (List<SearchResult>) session.getAttribute("searchList");
 		System.out.println("searchList.size() = " + searchList.size());
 
 		// list of results to display
-		List<SearchResult> results = new ArrayList<SearchResult>();
-
+		
+		//get word(s) typed in search engine
 		String initialQuery = request.getParameter("query").trim().toLowerCase();
+		//store each word in to the array 
 		String[] querys = initialQuery.split(" ");
-
-		Map<Integer, Double> scores = new TreeMap<Integer, Double>();
-		Map<Integer, Integer> map;
-
-		double score = -1;
-		// for each query term, calculate tdidf
-		for (String query : querys) {
-			System.out.println(query);
-			try {
-				map = DatabaseCall.getTFIDF(query);
-				System.out.println("tfidf map size = " + map.size());
-				for (int docId : map.keySet()) {
-					score = map.get(docId);
-					if (scores.containsKey(docId)) {
-						scores.put(docId, scores.get(docId) * Math.log(score));
-					} else {
-						scores.put(docId, Math.log(score));
-					}
-				}
-
-			} catch (SQLException e) {
-				//e.printStackTrace();
-			}
-		}
-
-		int docId;
-		SearchResult sr;
-		int titleMatches;
-		// for each doc, determine if any query term in url or title
-		for (Entry<Integer, Double> entry : scores.entrySet()) {
-			docId = entry.getKey();
-			sr = searchList.get(docId);
-			
-			titleMatches = 0;
-			for (String query : querys) {
-				if (sr.getTitle().contains(query)) {
-					for (String s : Util.tokenize(sr.getTitle())) {
-						if (s.equalsIgnoreCase(query)) {
-							scores.put(docId, entry.getValue() * 1.3 * ++titleMatches);
-							break;
-						}
-					}
-				}
-				if (sr.getUrl().contains(query)) {
-					for (String s : Util.tokenize(sr.getUrl())) {
-						if (s.equalsIgnoreCase(query)) {
-							scores.put(docId, entry.getValue() * 1.3);
-							break;
-						}
-					}
-				}
-			}
-		}
-
-		// sort by highest scores first
-		Map<Integer, Double> temp = sortByComparator(scores);
-
-		int count = 0;
-		// for the first MAX_SHOWING entries, calculate page rank
-		for (Entry<Integer, Double> entry : temp.entrySet()) {
-			docId = entry.getKey();
-			try {
-				score = DatabaseCall.getPageRank(docId);
-			} catch (SQLException e) {
-				//e.printStackTrace();
-			}
-			if (score != -1) {
-				scores.put(docId, entry.getValue() * Math.log(score));
-			}
-
-			if (count++ > MAX_SHOWING) {
-				break;
-			}
-		}
-		scores = sortByComparator(scores);
-
-		// get the scores title and url information
-		count = 0;
-		for (Entry<Integer, Double> entry : scores.entrySet()) {
-			docId = entry.getKey();
-			System.out.println(entry.getValue());
-			sr = searchList.get(docId);
-			results.add(new SearchResult(docId, sr.getTitle(), sr.getUrl()));
-
-			if (count++ > MAX_SHOWING) {
-				break;
-			}
-		}
-
+		
+		//calculate TF-IDF Scores 
+		Map<Integer, Double> tfidfSCORE = calcTFIDF(querys); 
+		//check query terms against docs 
+		Map<Integer, Double> scores = checkDocsForTerms(searchList, querys, tfidfSCORE); 
+		// for the first MAX_SHOWING entries, calculate page rank 
+		scores = calcPageRank(scores);
+		//for the first MAX_SHOWING entries, calculate SVD
+		
+		
+		//finally get results after all scoring
+		List<SearchResult> results = getDocInfo(searchList, scores);
+		
 		try {
 			request.setAttribute("results", results);
 			request.getRequestDispatcher("JSP/searchResults.jsp").forward(request, response);
@@ -210,4 +143,122 @@ public class DisplayPage implements HttpRequestHandler {
 		}
 		return sortedMap;
 	}
+	
+	
+	private Map<Integer, Double> calcTFIDF(String[] querys){
+		
+		Map<Integer, Double> scores = new TreeMap<Integer, Double>();
+		Map<Integer, Integer> map;
+		
+		// for each query term, calculate tdidf
+		for (String query : querys) {
+			System.out.println(query);
+			try {
+				map = DatabaseCall.getTFIDF(query);
+				System.out.println("tfidf map size = " + map.size());
+				for (int docId : map.keySet()) {
+					score = map.get(docId);
+					if (scores.containsKey(docId)) {
+						scores.put(docId, scores.get(docId) * Math.log(score));
+					} else {
+						scores.put(docId, Math.log(score));
+					}
+				}
+
+			} catch (SQLException e) {
+				//e.printStackTrace();
+			}
+		}
+		
+		return scores; 
+	}
+	
+	private Map<Integer, Double> calcPageRank(Map<Integer, Double> scores){
+		
+		Map<Integer, Double> temp = sortByComparator(scores);
+		
+		int count = 0;
+		// for the first MAX_SHOWING entries, calculate page rank
+		for (Entry<Integer, Double> entry : temp.entrySet()) {
+			docId = entry.getKey();
+			try {
+				score = DatabaseCall.getPageRank(docId);
+			} catch (SQLException e) {
+				//e.printStackTrace();
+			}
+			if (score != -1) {
+				scores.put(docId, entry.getValue() * Math.log(score));
+			}
+
+			if (count++ > MAX_SHOWING) {
+				break;
+			}
+		}		
+		return scores; 
+	}
+	
+	private Map<Integer, Double> calcSVD(Map<Integer, Double> scores){
+		
+		Singular singular = new Singular(); 
+		
+		
+		return scores; 
+	}
+	
+	private Map<Integer, Double> checkDocsForTerms(List<SearchResult> searchList, String[] querys,
+			Map<Integer, Double> scores){
+
+		int docId;
+		SearchResult sr;
+		int titleMatches;
+		// for each doc, determine if any query term in url or title
+		for (Entry<Integer, Double> entry : scores.entrySet()) {
+			docId = entry.getKey();
+			sr = searchList.get(docId);
+			
+			titleMatches = 0;
+			for (String query : querys) {
+				if (sr.getTitle().contains(query)) {
+					for (String s : Util.tokenize(sr.getTitle())) {
+						if (s.equalsIgnoreCase(query)) {
+							scores.put(docId, entry.getValue() * 1.3 * ++titleMatches);
+							break;
+						}
+					}
+				}
+				if (sr.getUrl().contains(query)) {
+					for (String s : Util.tokenize(sr.getUrl())) {
+						if (s.equalsIgnoreCase(query)) {
+							scores.put(docId, entry.getValue() * 1.3);
+							break;
+						}
+					}
+				}
+			}
+		}
+		
+		return scores; 
+	}
+	
+	private List<SearchResult> getDocInfo(List<SearchResult> searchList, Map<Integer, Double> scores){
+		
+		List<SearchResult> results = new ArrayList<SearchResult>();	
+		scores = sortByComparator(scores);
+
+		// get the scores title and url information
+		int count = 0;
+		for (Entry<Integer, Double> entry : scores.entrySet()) {
+			docId = entry.getKey();
+			System.out.println(entry.getValue());
+			sr = searchList.get(docId);
+			results.add(new SearchResult(docId, sr.getTitle(), sr.getUrl()));
+		
+			if (count++ > MAX_SHOWING) {
+				break;
+			}
+		}
+		return results; 
+	}
+	
+	
 }

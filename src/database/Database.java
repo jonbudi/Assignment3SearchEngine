@@ -11,7 +11,7 @@ public class Database {
 
 	private static final String DATABASE = "jdbc:mysql:///icsdump";
 	private static final String USERNAME = "root";
-	private static final String PASSWORD = "football99";
+	private static final String PASSWORD = "Password1";
 
 	protected static boolean isConnected;
 	protected static Connection connection;
