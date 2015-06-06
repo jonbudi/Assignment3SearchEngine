@@ -15,7 +15,8 @@ public class Database {
 
 	protected static boolean isConnected;
 	protected static Connection connection;
-
+	protected static PreparedStatement statement = null; 
+	
 	/** connect to database with given username and password **/
 	public static void connect() {
 		if (!isConnected) {
@@ -47,14 +48,18 @@ public class Database {
 
 	/** executes select queries **/
 	public static ResultSet executeQuery(String query) throws SQLException {
-		Statement select = connection.createStatement();
-		return select.executeQuery(query);
+	
+		statement = connection.prepareStatement(query);
+		return statement.executeQuery(); 
+	
 	}
 
 	/** executes update/delete queries **/
 	public static int executeUpdate(String query) throws SQLException {
-		Statement select = connection.createStatement();
-		return select.executeUpdate(query);
+		
+		statement = connection.prepareStatement(query);
+		
+		return statement.executeUpdate();
 	}
 
 	public static Connection getConnection() {

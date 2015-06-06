@@ -23,7 +23,8 @@
 	<div class="container">
 		<div class="vertical-center-row" id="divControl">
 			<div align="center">
-				<h1 id="header">CS 121 Search Engine</h1>
+			<img src="logo.png" >
+				<h1 id="header">The search engine that is in between google and yahoo...</h1>
 				<form name="searchForm" method="post" action="DisplayPage.cd">
 					<div class="form-group">
 						<input type="text" class="form-control" id="searchBar"

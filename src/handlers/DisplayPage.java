@@ -70,6 +70,7 @@ public class DisplayPage implements HttpRequestHandler {
 		// for the first MAX_SHOWING entries, calculate page rank 
 		scores = calcPageRank(scores);
 		//for the first MAX_SHOWING entries, calculate SVD
+		//scores = calcSVD(scores); 
 		
 		
 		//finally get results after all scoring
@@ -199,7 +200,7 @@ public class DisplayPage implements HttpRequestHandler {
 	
 	private Map<Integer, Double> calcSVD(Map<Integer, Double> scores){
 		
-		Singular singular = new Singular(); 
+		//Singular singular = new Singular(); 
 		
 		
 		return scores; 
