@@ -58,7 +58,7 @@
 
 		<h1 id="header">Search Results</h1>
 		<%
-			for (int i = 0; i < results.size(); ++i) {
+			for (int i = 0; i < 10; ++i) {
 				SearchResult sr = results.get(i);
 		%>
 		<p>

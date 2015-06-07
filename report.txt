@@ -2,48 +2,6 @@
 Query: mondego
 --------------------------------------------------------------------------------
 
-TFIDF results:
-
-mondego group @ uc irvine
-http://mondego.ics.uci.edu/
-
-noteworthy achievements @ the bren school of information and computer sciences
-http://www.ics.uci.edu/community/news/notes/index
-
-noteworthy achievements @ the bren school of information and computer sciences
-http://www.ics.uci.edu/community/news/notes/index.php
-
-noteworthy achievements @ the bren school of information and computer sciences
-http://www.ics.uci.edu/community/news/notes/
-
-crista lopes home page at uci
-http://www.ics.uci.edu/~lopes/
-
-uci source code data sets
-http://www.ics.uci.edu/~lopes/datasets/
-
-information retrieval assignments
-http://www.ics.uci.edu/~kay/courses/i141/hw/asst3.html
-
-noteworthy achievements 2013-2014 @ the bren school of information and computer sciences
-http://www.ics.uci.edu/community/news/notes/notes_2013.php
-
-index of /datasets/wikipedia-events
-http://mondego.ics.uci.edu/datasets/wikipedia-events/
-
-index of /datasets
-http://mondego.ics.uci.edu/datasets/
-
-index of /datasets/wikipedia-events/files
-http://mondego.ics.uci.edu/datasets/wikipedia-events/files/
-
-uci source code data set: sds_source-repo-18k
-http://www.ics.uci.edu/~lopes/datasets/SDS_source-repo-18k.html
-
---------------------------------------------------------------------------------
-
-Improved results:
-
 mondego group @ uc irvine 
 http://mondego.ics.uci.edu/
 
@@ -59,72 +17,9 @@ http://www.ics.uci.edu/community/news/notes/index.php
 noteworthy achievements @ the bren school of information and computer sciences 
 http://www.ics.uci.edu/community/news/notes/
 
-index of /datasets/wikipedia-events 
-http://mondego.ics.uci.edu/datasets/wikipedia-events/
-
-index of /datasets/wikipedia-events/files 
-http://mondego.ics.uci.edu/datasets/wikipedia-events/files/
-
-index of /datasets 
-http://mondego.ics.uci.edu/datasets/
-
-calico for the mondego group – software design and collaboration laboratory 
-http://sdcl.ics.uci.edu/2012/05/calico-for-the-mondego-group/
-
-information retrieval assignments 
-http://www.ics.uci.edu/~kay/courses/i141/hw/asst3.html
-
-uci source code data sets 
-http://www.ics.uci.edu/~lopes/datasets/
-
-noteworthy achievements 2013-2014 @ the bren school of information and computer sciences 
-http://www.ics.uci.edu/community/news/notes/notes_2013.php
-
 -------------------------------------------------------------------------------------
 Query: machine learning
 -------------------------------------------------------------------------------------
-
-TFIDF results:
-
-michael pazzani: publications on machine learning
-http://www.ics.uci.edu/~pazzani/Publications/OldPublications.html
-
-michael j. pazzani: publications on machine learning
-http://www.ics.uci.edu/~pazzani/Publications/APubs.html
-
-isg
-http://isg.ics.uci.edu/events.html
-
-icml ’13 workshop: machine learning meets crowdsourcing
-http://www.ics.uci.edu/~qliu1/MLcrowd_ICML_workshop/index.html
-
-icml ’13 workshop: machine learning meets crowdsourcing
-http://www.ics.uci.edu/~qliu1/MLcrowd_ICML_workshop/
-
-dennis f. kibler
-http://www.ics.uci.edu/~kibler/
-
-syskill & webert: identifying interesting web sites
-http://www.ics.uci.edu/~pazzani/RTF/AAAI.html
-
-michael j. pazzani: research
-http://www.ics.uci.edu/~pazzani/Research.html
-
-interface '01 sessions
-http://www.ics.uci.edu/~interfac/all-sessions.html
-
-cs-171 fall quarter 2014
-http://www.ics.uci.edu/~rickl/courses/cs-171/2014-fq-cs171/CS-171-FQ-2014.htm
-
-untitled
-http://www.ics.uci.edu/~kibler/ics273/syllabus/
-
-quotations for cs1
-http://www.ics.uci.edu/~pattis/quotations.html
-
--------------------------------------------------------------------------------------
-
-Improved results:
 
 icml ’13 workshop: machine learning meets crowdsourcing
 http://www.ics.uci.edu/~qliu1/MLcrowd_ICML_workshop/
@@ -141,72 +36,9 @@ http://emj.ics.uci.edu/papers/machine-learning-papers/
 machine learning hammer | ramesh jain
 http://ngs.ics.uci.edu/machine-learning-hammer/
 
-sli | classes / cs178: machine learning and data mining
-http://sli.ics.uci.edu/Classes/2011W-178
-
-sli | classes / cs178: machine learning and data mining
-http://sli.ics.uci.edu/Classes/2010W-178
-
-sli | classes / cs178: machine learning and data mining
-http://sli.ics.uci.edu/Classes/2012W-178
-
-sli | classes / cs178: machine learning and data mining
-http://sli.ics.uci.edu/Classes/2012F-178
-
-michael pazzani: publications on machine learning
-http://www.ics.uci.edu/~pazzani/Publications/OldPublications.html
-
-machine learning hammer | ramesh jain
-http://ngs.ics.uci.edu/machine-learning-hammer/comment-page-1/
-
-sli | classes / cs178: machine learning and data mining
-http://sli.ics.uci.edu/Classes/2014W-178
-
 -------------------------------------------------------------------------------------
 Query: software engineering
 -------------------------------------------------------------------------------------
-
-TDIDF results:
-
-publications of richard n. taylor
-http://www.ics.uci.edu/~taylor/Publications.htm
-
-andré van der hoek's publications
-http://www.ics.uci.edu/~andre/publications.html
-
-walt scacchi's publications page
-http://www.ics.uci.edu/~wscacchi/publications.html
-
-walt scacchi
-http://www.ics.uci.edu/~wscacchi/
-
-david redmiles publications page at uci
-http://www.ics.uci.edu/~redmiles/publications.html
-
-understanding software productivity
-http://www.ics.uci.edu/~wscacchi/Papers/Vintage/Software_Productivity.html
-
-publications
-http://www.ics.uci.edu/~alspaugh/pubs.html
-
-simse publications
-http://www.ics.uci.edu/~emilyo/SimSE/publications.html
-
-fielding dissertation: references
-http://www.ics.uci.edu/~fielding/pubs/dissertation/references.htm
-
-ics 221 fall quarter 2003 page at uci
-http://www.ics.uci.edu/~redmiles/ics221-FQ03/
-
-vita: nenad medvidovic
-http://www.ics.uci.edu/~neno/vita/vita.html
-
-papers – software design and collaboration laboratory
-http://sdcl.ics.uci.edu/papers/
-
--------------------------------------------------------------------------------------
-
-Improved results:
 
 software engineering (se) « degrees « bren school of information and computer sciences « university of california irvine
 http://www.ics.uci.edu/prospective/en/degrees/software-engineering/
@@ -223,23 +55,135 @@ http://www.ics.uci.edu/~wscacchi/Papers/Vintage/Software_Productivity.html
 new workshop on crowdsourcing in software engineering – software design and collaboration laboratory
 http://sdcl.ics.uci.edu/2013/12/new-workshop-on-crowdsourcing-in-software-engineering/
 
-article published in empirical software engineering journal – software design and collaboration laboratory
-http://sdcl.ics.uci.edu/2013/10/article-published-in-empirical-software-engineering-journal/
+-------------------------------------------------------------------------------------
+Query: security
+-------------------------------------------------------------------------------------
 
-software engineering degree @ the bren school of information and computer sciences
-http://www.ics.uci.edu/grad/degrees/degree_se.php
+index (swirl webdav workspace 0.20 api) 
+http://drzaius.ics.uci.edu/~swirl/impromptu-0.20/apidocs/index-all.html
 
-undergraduate degree in software engineering @ the bren school of information and computer sciences
-http://www.ics.uci.edu/ugrad/degrees/degree_se.php
+swirl.workspace.security class hierarchy (swirl webdav workspace 0.20 api) 
+http://drzaius.ics.uci.edu/~swirl/impromptu-0.20/apidocs/swirl/workspace/security/package-tree.html
 
-a knowledge-based environment for modeling and simulating software engineering processes | virtual collaboration portal
-http://vcp.ics.uci.edu/content/knowledge-based-environment-modeling-and-simulating-software-engineering-processes-0
+slideuserrealm (impromptu workspace 0.30 api) 
+http://drzaius.ics.uci.edu/~swirl/impromptu-0.30/apidocs/edu/uci/isr/impromptu/security/SlideUserRealm.html
 
-software engineering @ the bren school of information and computer sciences
-http://www.ics.uci.edu/faculty/area/area_software.php
+levelhandler (impromptu workspace 0.30 api) 
+http://drzaius.ics.uci.edu/~swirl/impromptu-0.30/apidocs/edu/uci/isr/impromptu/security/LevelHandler.html
 
-ics 52: introduction to software engineering (winter 2012)
-http://www.ics.uci.edu/~andre/ics52w2012.html
+linux security @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/computing/linux/security.php
 
-process models in software engineering | virtual collaboration portal
-http://vcp.ics.uci.edu/content/process-models-software-engineering-2
+-------------------------------------------------------------------------------------
+Query: student affairs
+-------------------------------------------------------------------------------------
+
+student affairs « contact « bren school of information and computer sciences « university of california irvine 
+http://www.ics.uci.edu/prospective/en/contact/student-affairs/
+
+2006-07 annual report student affairs @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/about/annualreport/2006-07/sao.php
+
+annual report 2005-06 student affairs @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/about/annualreport/2005-06/sao.php
+
+undergraduate student faq @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/ugrad/qa/index.php
+
+undergraduate education @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/ugrad/
+
+-------------------------------------------------------------------------------------
+Query: graduate courses
+-------------------------------------------------------------------------------------
+
+undergraduate student faq @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/ugrad/qa/index.php
+
+graduate degrees @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/grad/degrees/degrees_PhDOverview
+
+Untitled 
+http://www.ics.uci.edu/~jcarlson/gradschool.html
+
+large introductory courses in research cs departments 
+http://www.ics.uci.edu/~kay/pubs/intro-ed-res-dept.html
+
+graduate degrees @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/grad/degrees/degrees_PhDOverview.php
+
+-------------------------------------------------------------------------------------
+Query: informatics
+-------------------------------------------------------------------------------------
+
+what is social informatics and why does it matter? 
+http://drzaius.ics.uci.edu/meta/classes/informatics161_fall06/papers/01kling.html
+
+faculty @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/faculty/
+
+informatics « degrees « bren school of information and computer sciences « university of california irvine 
+http://www.ics.uci.edu/prospective/en/degrees/informatics/
+
+informatics 131 course reference 
+http://www.ics.uci.edu/~kay/courses/131/index.html
+
+informatics 131 course reference 
+http://www.ics.uci.edu/~kay/courses/131/
+
+-------------------------------------------------------------------------------------
+Query: REST
+-------------------------------------------------------------------------------------
+
+fielding dissertation: chapter 5: representational state transfer (rest) 
+http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm
+
+fielding dissertation: chapter 6: experience and evaluation 
+http://www.ics.uci.edu/~fielding/pubs/dissertation/evaluation.htm
+
+architectural styles and the design of network-based software architectures 
+http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
+
+ics 184 / eecs 116 summer 2006 
+http://www.ics.uci.edu/~thornton/ics184/MidtermSolutions.html
+
+answers to sample questions 
+http://www.ics.uci.edu/~kay/courses/i41/answers.html
+
+-------------------------------------------------------------------------------------
+Query: computer games
+-------------------------------------------------------------------------------------
+
+center for computer games & virtual worlds » affiliated faculty 
+http://cgvw.ics.uci.edu/affiliated-faculty/
+
+center for computer games & virtual worlds » blog archive » studying computer games is no waste 
+http://cgvw.ics.uci.edu/studying-computer-games-is-no-waste/
+
+center for computer games & virtual worlds » blog archive » the future of research in computer games and virtual worlds 
+http://cgvw.ics.uci.edu/the-future-of-research-in-computer-games-and-virtual-worlds/
+
+center for computer games & virtual worlds » news 
+http://cgvw.ics.uci.edu/news-events/
+
+center for computer games & virtual worlds » seminar talk 2013-01-16 
+http://cgvw.ics.uci.edu/seminar-talk-2013-01-16/
+
+-------------------------------------------------------------------------------------
+Query: information retrieval
+-------------------------------------------------------------------------------------
+
+fall 2008: computer science 221 : information retrieval : calendar 
+http://www.ics.uci.edu/~djp3/classes/2008_09_26_CS221/calendar.html
+
+acm multimedia information retrieval | ramesh jain 
+http://ngs.ics.uci.edu/acm-multimedia-information-retrieval/
+
+multimedia information retrieval at nus – 1 | ramesh jain 
+http://ngs.ics.uci.edu/multimedia-information-retrieval-at-nus-1/
+
+multimedia information retrieval at nus – 2 | ramesh jain 
+http://ngs.ics.uci.edu/multimedia-information-retrieval-at-nus-2/
+
+multimedia information retrieval at nus – 1 | ramesh jain 
+http://ngs.ics.uci.edu/multimedia-information-retrieval-at-nus-1/comment-page-1/

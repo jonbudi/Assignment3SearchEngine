@@ -1,0 +1,245 @@
+--------------------------------------------------------------------------------
+Query: mondego
+--------------------------------------------------------------------------------
+
+TFIDF results:
+
+mondego group @ uc irvine
+http://mondego.ics.uci.edu/
+
+noteworthy achievements @ the bren school of information and computer sciences
+http://www.ics.uci.edu/community/news/notes/index
+
+noteworthy achievements @ the bren school of information and computer sciences
+http://www.ics.uci.edu/community/news/notes/index.php
+
+noteworthy achievements @ the bren school of information and computer sciences
+http://www.ics.uci.edu/community/news/notes/
+
+crista lopes home page at uci
+http://www.ics.uci.edu/~lopes/
+
+uci source code data sets
+http://www.ics.uci.edu/~lopes/datasets/
+
+information retrieval assignments
+http://www.ics.uci.edu/~kay/courses/i141/hw/asst3.html
+
+noteworthy achievements 2013-2014 @ the bren school of information and computer sciences
+http://www.ics.uci.edu/community/news/notes/notes_2013.php
+
+index of /datasets/wikipedia-events
+http://mondego.ics.uci.edu/datasets/wikipedia-events/
+
+index of /datasets
+http://mondego.ics.uci.edu/datasets/
+
+index of /datasets/wikipedia-events/files
+http://mondego.ics.uci.edu/datasets/wikipedia-events/files/
+
+uci source code data set: sds_source-repo-18k
+http://www.ics.uci.edu/~lopes/datasets/SDS_source-repo-18k.html
+
+--------------------------------------------------------------------------------
+
+Improved results:
+
+mondego group @ uc irvine 
+http://mondego.ics.uci.edu/
+
+crista lopes home page at uci 
+http://www.ics.uci.edu/~lopes/
+
+noteworthy achievements @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/community/news/notes/index
+
+noteworthy achievements @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/community/news/notes/index.php
+
+noteworthy achievements @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/community/news/notes/
+
+index of /datasets/wikipedia-events 
+http://mondego.ics.uci.edu/datasets/wikipedia-events/
+
+index of /datasets/wikipedia-events/files 
+http://mondego.ics.uci.edu/datasets/wikipedia-events/files/
+
+index of /datasets 
+http://mondego.ics.uci.edu/datasets/
+
+calico for the mondego group – software design and collaboration laboratory 
+http://sdcl.ics.uci.edu/2012/05/calico-for-the-mondego-group/
+
+information retrieval assignments 
+http://www.ics.uci.edu/~kay/courses/i141/hw/asst3.html
+
+uci source code data sets 
+http://www.ics.uci.edu/~lopes/datasets/
+
+noteworthy achievements 2013-2014 @ the bren school of information and computer sciences 
+http://www.ics.uci.edu/community/news/notes/notes_2013.php
+
+-------------------------------------------------------------------------------------
+Query: machine learning
+-------------------------------------------------------------------------------------
+
+TFIDF results:
+
+michael pazzani: publications on machine learning
+http://www.ics.uci.edu/~pazzani/Publications/OldPublications.html
+
+michael j. pazzani: publications on machine learning
+http://www.ics.uci.edu/~pazzani/Publications/APubs.html
+
+isg
+http://isg.ics.uci.edu/events.html
+
+icml ’13 workshop: machine learning meets crowdsourcing
+http://www.ics.uci.edu/~qliu1/MLcrowd_ICML_workshop/index.html
+
+icml ’13 workshop: machine learning meets crowdsourcing
+http://www.ics.uci.edu/~qliu1/MLcrowd_ICML_workshop/
+
+dennis f. kibler
+http://www.ics.uci.edu/~kibler/
+
+syskill & webert: identifying interesting web sites
+http://www.ics.uci.edu/~pazzani/RTF/AAAI.html
+
+michael j. pazzani: research
+http://www.ics.uci.edu/~pazzani/Research.html
+
+interface '01 sessions
+http://www.ics.uci.edu/~interfac/all-sessions.html
+
+cs-171 fall quarter 2014
+http://www.ics.uci.edu/~rickl/courses/cs-171/2014-fq-cs171/CS-171-FQ-2014.htm
+
+untitled
+http://www.ics.uci.edu/~kibler/ics273/syllabus/
+
+quotations for cs1
+http://www.ics.uci.edu/~pattis/quotations.html
+
+-------------------------------------------------------------------------------------
+
+Improved results:
+
+icml ’13 workshop: machine learning meets crowdsourcing
+http://www.ics.uci.edu/~qliu1/MLcrowd_ICML_workshop/
+
+icml ’13 workshop: machine learning meets crowdsourcing
+http://www.ics.uci.edu/~qliu1/MLcrowd_ICML_workshop/index.html
+
+sli | classes / cs178: machine learning and data mining
+http://sli.ics.uci.edu/Classes/2015W-178
+
+machine learning papers | eric mjolsness
+http://emj.ics.uci.edu/papers/machine-learning-papers/
+
+machine learning hammer | ramesh jain
+http://ngs.ics.uci.edu/machine-learning-hammer/
+
+sli | classes / cs178: machine learning and data mining
+http://sli.ics.uci.edu/Classes/2011W-178
+
+sli | classes / cs178: machine learning and data mining
+http://sli.ics.uci.edu/Classes/2010W-178
+
+sli | classes / cs178: machine learning and data mining
+http://sli.ics.uci.edu/Classes/2012W-178
+
+sli | classes / cs178: machine learning and data mining
+http://sli.ics.uci.edu/Classes/2012F-178
+
+michael pazzani: publications on machine learning
+http://www.ics.uci.edu/~pazzani/Publications/OldPublications.html
+
+machine learning hammer | ramesh jain
+http://ngs.ics.uci.edu/machine-learning-hammer/comment-page-1/
+
+sli | classes / cs178: machine learning and data mining
+http://sli.ics.uci.edu/Classes/2014W-178
+
+-------------------------------------------------------------------------------------
+Query: software engineering
+-------------------------------------------------------------------------------------
+
+TDIDF results:
+
+publications of richard n. taylor
+http://www.ics.uci.edu/~taylor/Publications.htm
+
+andré van der hoek's publications
+http://www.ics.uci.edu/~andre/publications.html
+
+walt scacchi's publications page
+http://www.ics.uci.edu/~wscacchi/publications.html
+
+walt scacchi
+http://www.ics.uci.edu/~wscacchi/
+
+david redmiles publications page at uci
+http://www.ics.uci.edu/~redmiles/publications.html
+
+understanding software productivity
+http://www.ics.uci.edu/~wscacchi/Papers/Vintage/Software_Productivity.html
+
+publications
+http://www.ics.uci.edu/~alspaugh/pubs.html
+
+simse publications
+http://www.ics.uci.edu/~emilyo/SimSE/publications.html
+
+fielding dissertation: references
+http://www.ics.uci.edu/~fielding/pubs/dissertation/references.htm
+
+ics 221 fall quarter 2003 page at uci
+http://www.ics.uci.edu/~redmiles/ics221-FQ03/
+
+vita: nenad medvidovic
+http://www.ics.uci.edu/~neno/vita/vita.html
+
+papers – software design and collaboration laboratory
+http://sdcl.ics.uci.edu/papers/
+
+-------------------------------------------------------------------------------------
+
+Improved results:
+
+software engineering (se) « degrees « bren school of information and computer sciences « university of california irvine
+http://www.ics.uci.edu/prospective/en/degrees/software-engineering/
+
+object-oriented software engineeringlecture 1
+http://www.ics.uci.edu/~ziv/ooad/intro_to_se/index.htm
+
+software engineering at uc irvine
+http://se.ics.uci.edu/SE_at_UCI.html
+
+understanding software productivity
+http://www.ics.uci.edu/~wscacchi/Papers/Vintage/Software_Productivity.html
+
+new workshop on crowdsourcing in software engineering – software design and collaboration laboratory
+http://sdcl.ics.uci.edu/2013/12/new-workshop-on-crowdsourcing-in-software-engineering/
+
+article published in empirical software engineering journal – software design and collaboration laboratory
+http://sdcl.ics.uci.edu/2013/10/article-published-in-empirical-software-engineering-journal/
+
+software engineering degree @ the bren school of information and computer sciences
+http://www.ics.uci.edu/grad/degrees/degree_se.php
+
+undergraduate degree in software engineering @ the bren school of information and computer sciences
+http://www.ics.uci.edu/ugrad/degrees/degree_se.php
+
+a knowledge-based environment for modeling and simulating software engineering processes | virtual collaboration portal
+http://vcp.ics.uci.edu/content/knowledge-based-environment-modeling-and-simulating-software-engineering-processes-0
+
+software engineering @ the bren school of information and computer sciences
+http://www.ics.uci.edu/faculty/area/area_software.php
+
+ics 52: introduction to software engineering (winter 2012)
+http://www.ics.uci.edu/~andre/ics52w2012.html
+
+process models in software engineering | virtual collaboration portal
+http://vcp.ics.uci.edu/content/process-models-software-engineering-2
