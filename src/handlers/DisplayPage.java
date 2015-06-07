@@ -28,15 +28,13 @@ import database.DatabaseCall;
 import domain.SearchResult;
 
 import mvcController.HttpRequestHandler;
+
 //import org.jblas.Singular; 
 
 public class DisplayPage implements HttpRequestHandler {
 
 	/** max number of suggestions shown **/
 	private static final int MAX_SHOWING = 10;
-	private double score = -1; 
-	private int docId;
-	private SearchResult sr;
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response)
@@ -44,39 +42,37 @@ public class DisplayPage implements HttpRequestHandler {
 
 		System.out.println("In DisplayPage.java");
 		HttpSession session = request.getSession(true);
-		
-		
+
 		// get list of search results (used to get url and title)
 		if (session.getAttribute("searchList") == null) {
 			session.setAttribute("searchList", getSearchResultList());
 		}
-		
-		
+
 		@SuppressWarnings("unchecked")
 		List<SearchResult> searchList = (List<SearchResult>) session.getAttribute("searchList");
-		System.out.println("searchList.size() = " + searchList.size());
 
-		// list of results to display
-		
-		//get word(s) typed in search engine
+		// get word(s) typed in search engine
 		String initialQuery = request.getParameter("query").trim().toLowerCase();
-		//store each word in to the array 
+		// store each word into an array 
 		String[] querys = initialQuery.split(" ");
-		
-		//calculate TF-IDF Scores 
-		Map<Integer, Double> tfidfSCORE = calcTFIDF(querys); 
-		//check query terms against docs 
-		Map<Integer, Double> scores = checkDocsForTerms(searchList, querys, tfidfSCORE); 
+
+		// calculate TF-IDF Scores 
+		Map<Integer, Double> scores = calcTFIDF(querys);
+
+		// check query terms against title and url
+		scores = checkTitleAndUrl(searchList, querys, scores);
+
 		// for the first MAX_SHOWING entries, calculate page rank 
 		scores = calcPageRank(scores);
-		//for the first MAX_SHOWING entries, calculate SVD
-		//scores = calcSVD(scores); 
-		
-		
-		//finally get results after all scoring
+
+		// for the first MAX_SHOWING entries, calculate SVD
+		scores = calcSVD(scores);
+
+		// finally get results after all scoring
 		List<SearchResult> results = getDocInfo(searchList, scores);
-		
+
 		try {
+			// set results attribute
 			request.setAttribute("results", results);
 			request.getRequestDispatcher("JSP/searchResults.jsp").forward(request, response);
 		} catch (ServletException | IOException e) {
@@ -144,13 +140,14 @@ public class DisplayPage implements HttpRequestHandler {
 		}
 		return sortedMap;
 	}
-	
-	
-	private Map<Integer, Double> calcTFIDF(String[] querys){
-		
+
+	/** caclulate TF IDF **/
+	private static Map<Integer, Double> calcTFIDF(String[] querys) {
+		double score;
+
 		Map<Integer, Double> scores = new TreeMap<Integer, Double>();
 		Map<Integer, Integer> map;
-		
+
 		// for each query term, calculate tdidf
 		for (String query : querys) {
 			System.out.println(query);
@@ -170,45 +167,13 @@ public class DisplayPage implements HttpRequestHandler {
 				//e.printStackTrace();
 			}
 		}
-		
-		return scores; 
-	}
-	
-	private Map<Integer, Double> calcPageRank(Map<Integer, Double> scores){
-		
-		Map<Integer, Double> temp = sortByComparator(scores);
-		
-		int count = 0;
-		// for the first MAX_SHOWING entries, calculate page rank
-		for (Entry<Integer, Double> entry : temp.entrySet()) {
-			docId = entry.getKey();
-			try {
-				score = DatabaseCall.getPageRank(docId);
-			} catch (SQLException e) {
-				//e.printStackTrace();
-			}
-			if (score != -1) {
-				scores.put(docId, entry.getValue() * Math.log(score));
-			}
 
-			if (count++ > MAX_SHOWING) {
-				break;
-			}
-		}		
-		return scores; 
+		return scores;
 	}
-	
-	private Map<Integer, Double> calcSVD(Map<Integer, Double> scores){
-		
-		//Singular singular = new Singular(); 
-		
-		
-		return scores; 
-	}
-	
-	private Map<Integer, Double> checkDocsForTerms(List<SearchResult> searchList, String[] querys,
-			Map<Integer, Double> scores){
 
+	/** check query terms against title and url **/
+	private static Map<Integer, Double> checkTitleAndUrl(List<SearchResult> searchList,
+			String[] querys, Map<Integer, Double> scores) {
 		int docId;
 		SearchResult sr;
 		int titleMatches;
@@ -216,7 +181,7 @@ public class DisplayPage implements HttpRequestHandler {
 		for (Entry<Integer, Double> entry : scores.entrySet()) {
 			docId = entry.getKey();
 			sr = searchList.get(docId);
-			
+
 			titleMatches = 0;
 			for (String query : querys) {
 				if (sr.getTitle().contains(query)) {
@@ -237,13 +202,50 @@ public class DisplayPage implements HttpRequestHandler {
 				}
 			}
 		}
-		
-		return scores; 
+
+		return scores;
 	}
-	
-	private List<SearchResult> getDocInfo(List<SearchResult> searchList, Map<Integer, Double> scores){
-		
-		List<SearchResult> results = new ArrayList<SearchResult>();	
+
+	/** calculate page rank **/
+	private static Map<Integer, Double> calcPageRank(Map<Integer, Double> scores) {
+
+		int docId;
+		double score = -1;
+		Map<Integer, Double> temp = sortByComparator(scores);
+
+		int count = 0;
+		// for the first MAX_SHOWING entries, calculate page rank
+		for (Entry<Integer, Double> entry : temp.entrySet()) {
+			docId = entry.getKey();
+			try {
+				score = DatabaseCall.getPageRank(docId);
+			} catch (SQLException e) {
+				//e.printStackTrace();
+			}
+			if (score != -1) {
+				scores.put(docId, entry.getValue() * Math.log(score));
+			}
+
+			if (count++ > MAX_SHOWING) {
+				break;
+			}
+		}
+		return scores;
+	}
+
+	/** calculate SVD **/
+	private static Map<Integer, Double> calcSVD(Map<Integer, Double> scores) {
+		//Singular singular = new Singular(); 
+		return scores;
+	}
+
+	/** get doc info **/
+	private static List<SearchResult> getDocInfo(List<SearchResult> searchList,
+			Map<Integer, Double> scores) {
+		int docId;
+		SearchResult sr;
+
+		List<SearchResult> results = new ArrayList<SearchResult>();
 		scores = sortByComparator(scores);
 
 		// get the scores title and url information
@@ -253,13 +255,11 @@ public class DisplayPage implements HttpRequestHandler {
 			System.out.println(entry.getValue());
 			sr = searchList.get(docId);
 			results.add(new SearchResult(docId, sr.getTitle(), sr.getUrl()));
-		
+
 			if (count++ > MAX_SHOWING) {
 				break;
 			}
 		}
-		return results; 
+		return results;
 	}
-	
-	
 }
