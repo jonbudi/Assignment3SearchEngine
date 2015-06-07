@@ -1,11 +1,125 @@
-html, body, .container {
-    height: 100%;
+html,body,.container {
+	height: 100%;
+	color: #EEFFEE;
 }
+
 .container {
-    display: table;
-    vertical-align: middle;
+	display: table;
+	vertical-align: middle;
 }
+
 .vertical-center-row {
-    display: table-cell;
-    vertical-align: middle;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	width: auto\9; /* ie8 */
+}
+
+body {
+	background: url('http://www.jiki.net/web/images/company/background.jpg')
+		fixed center center no-repeat;
+	background-size: cover;
+}
+
+h1 {
+	color: #EEEEEE;	
+}
+
+a:link {
+	color: #00FF00;
+}
+
+/* visited link */
+a:visited {
+	color: #00FFFF;
+}
+
+/* mouse over link */
+a:hover {
+	color: #FF00FF;
+}
+
+/* selected link */
+a:active {
+	color: #0000FF;
+}
+
+.background {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background: transparent;
+}
+
+/* Search Box */
+.search-box {
+	position: relative;
+	height: 40px; /* Define the search box height and width here */
+	width: 100%;
+}
+
+.search-box .search-input {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 0 50px 0 10px; /* padding-right = button width */
+	border: solid 1px #808080;
+	border-radius: 3px;
+	color: #4b0082;
+	outline: none;
+	box-shadow: 0px 0px 3px 2px rgba(75, 0, 130, 0);
+	transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.search-box .search-input:focus {
+	border-color: #4b0082;
+	box-shadow: 0px 0px 4px 2px rgba(75, 0, 130, 0.15);
+}
+
+/* Placeholder */
+.search-box .search-input::-webkit-input-placeholder {
+	color: #bfbfbf;
+}
+
+.search-box .search-input::-moz-placeholder {
+	color: #bfbfbf;
+	opacity: 1;
+}
+
+.search-box .search-input:-ms-input-placeholder {
+	color: #bfbfbf;
+}
+
+/* Icon */
+.search-box .search-icon {
+	content: '';
+	position: absolute;
+	z-index: 0;
+	top: 1px; /* Keep away */
+	right: 1px; /* from */
+	bottom: 1px; /* border */
+	width: 50px;
+	line-height: 38px; /* 40 - 1 - 1 */
+	font-size: 20px;
+	text-align: center;
+	color: #4b0082;
+	transition: transform 0.2s ease;
+}
+
+/* Button */
+.search-box .search-button {
+	position: absolute;
+	z-index: 1;
+	top: -5px; /* using negative values, so that on touch */
+	right: 1px;
+	bottom: -5px; /* devices it would be easier to hit */
+	width: 50px;
+	border: none;
+	overflow: hidden; /* Just to be sure */
+	opacity: 0; /* hidden */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	/* IE8 */
 }

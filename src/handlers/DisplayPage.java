@@ -28,7 +28,7 @@ import database.DatabaseCall;
 import domain.SearchResult;
 
 import mvcController.HttpRequestHandler;
-import org.jblas.Singular; 
+//import org.jblas.Singular; 
 
 public class DisplayPage implements HttpRequestHandler {
 
